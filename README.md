@@ -16,8 +16,8 @@ export declare const convert: <Info = any>(xml: string, options: {
 export declare type Plugin<T = any> = {
     replaceBefore?: (xml: string, info: T) => string; // handle source code before traverse
     replaceAfter?: (xml: string, info: T) => string; // handle generate code after js2xml
-    after?: TraverseFunction; // called before traverse children
-    before?: TraverseFunction; // called after traverse children
+    before?: TraverseFunction; // called before after traversing children
+    after?: TraverseFunction; // called  after traversing children
 };
 
 
