@@ -2,7 +2,7 @@ import { Element, Options } from "xml-js";
 import { cloneDeep } from "lodash";
 import { traverse, Plugin } from "./traverse";
 
-const { xml2js, js2xml } = require("xml2js");
+const { xml2js, js2xml } = require("xml-js");
 
 export const convert = <Info = any>(
   xml: string,
@@ -11,7 +11,7 @@ export const convert = <Info = any>(
     info?: Info;
     xml2jsOptions?: Options.XML2JS;
     js2xmlOptions?: Options.JS2XML;
-  }
+  } = {}
 ) => {
   const { plugins = [], info = null, xml2jsOptions, js2xmlOptions } = options;
   const element = xml2js(
