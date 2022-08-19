@@ -1,9 +1,9 @@
-import typescript from "rollup-plugin-typescript";
-import json from "@rollup/plugin-json";
+import typescript from "@rollup/plugin-typescript";
+import commonjs from "@rollup/plugin-commonjs";
 
 export default {
   input: "./src/index.ts",
-  plugins: [json(), typescript({})],
+  plugins: [typescript({}), commonjs({})],
   output: [
     {
       format: "es",

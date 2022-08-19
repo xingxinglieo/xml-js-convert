@@ -1,8 +1,13 @@
-import { Element, Options } from "xml-js";
-import { cloneDeep } from "lodash";
+import { Element, Options, xml2js, js2xml } from "xml-js";
 import { traverse, Plugin } from "./traverse";
 
-const { xml2js, js2xml } = require("xml-js");
+function deepCopy<T>(obj: T) {
+  if (typeof obj == "object") {
+    let result = obj.constructor == Array ? [] : {};
+    Object.keys(obj).forEach((item) => (result[item] = deepCopy(obj[item])));
+    return result as T;
+  } else return obj;
+}
 
 export const convert = <Info = any>(
   xml: string,
@@ -19,7 +24,7 @@ export const convert = <Info = any>(
     xml2jsOptions
   ) as Element;
 
-  const copy = cloneDeep(element);
+  const copy = deepCopy(element);
   const root = copy;
 
   traverse({
