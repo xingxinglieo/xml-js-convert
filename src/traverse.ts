@@ -51,14 +51,14 @@ export const traverse = (args: Props) => {
   element.attributes = element.attributes ?? {};
 
   for (const p of plugins) {
-    let count = 0;
-    const stop = () => count++;
+    let stopFlag = 0;
+    const stop = () => stopFlag++;
     p.before?.({
       ...args,
       stop,
       findAncestor: (level: number) => findAncestor(root, element, level)
     });
-    if (count > 0) {
+    if (stopFlag > 0) {
       return;
     }
   }
@@ -88,14 +88,14 @@ export const traverse = (args: Props) => {
   }
 
   for (const p of plugins) {
-    let count = 0;
-    const stop = () => count++;
+    let stopFlag = 0;
+    const stop = () => stopFlag++;
     p.after?.({
       ...args,
       stop,
       findAncestor: (level: number) => findAncestor(root, element, level)
     });
-    if (count > 0) {
+    if (stopFlag > 0) {
       return;
     }
   }

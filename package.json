@@ -1,6 +1,6 @@
 {
   "name": "xml-js-convert",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A traverser for xml-js node tree.",
   "keywords": [
     "xml-js",
